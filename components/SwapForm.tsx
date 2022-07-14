@@ -122,15 +122,15 @@ const swapForm: NextPage = () => {
 
         </div>
       </form>
-      <div className="flex justify-center m-3">
+      <div className="flex justify-center">
         <button
-          className="rounded-3xl bg-green-500 text-white px-10 py-4 mt-6 "
+          className="rounded-3xl w-28 text-center bg-green-500 text-white px-4 py-2 m-5 "
           onClick={() => getswapContractAtoC()}
         >
           Exchange
         </button>
         <button
-          className="rounded-3xl bg-green-500 text-white px-12 py-4 mt-6 "
+          className="rounded-3xl w-28 text-center bg-green-500 text-white px-4 py-2 m-5 "
           onClick={() => setConvert(!convert)}
         >
           Convert

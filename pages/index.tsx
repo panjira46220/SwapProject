@@ -83,22 +83,22 @@ const Home: NextPage = () => {
           </div>
         </div>
 
-        <div className="flex space-x-24">
-          <div className="flex space-x-2 lg:flex text-black">
+        <div className="flex space-x-5">
+          <div className="flex space-x-1 lg:flex text-black">
             <img
               src="/16093.png"
               alt="Ice-logo"
-              className="w-[45px] h-[45px] mr-4 rounded-full"
+              className="w-[45px] h-[45px] mr-2 mt-1 rounded-full"
             />
-            <p className="mt-2">$</p>
-            <p className="mt-2">{balance}</p>
+            <p className="mt-2.5">{balance}</p>
+            <p className="mt-2.5">KUB</p>
           </div>
-          <div className="border-black border-2 rounded-full w-full h-full p-2">
-            <p className="ml-10 text-black">{test}</p>
+          <div className="border-black border-2 rounded-full h-full p-2">
+            <p className="text-black pl-2 pr-2.5">Wallet Address : {test}</p>
           </div>
         </div>
       </nav>
-      <div className="bg-green-100 max-h-screen pt-4">
+      <div className="bg-green-100 max-h-screen pt-7">
         {address ? (
           <div>
             <SwapForm />
@@ -118,7 +118,7 @@ const Home: NextPage = () => {
             <div className="flex justify-center">
               <button
                 type="button"
-                className="rounded-3xl bg-green-500 text-white px-12 py-4 mt-6"
+                className="rounded-3xl w-28 text-center bg-green-500 text-white px-4 py-2 m-5 "
                 onClick={connectWallet}
               >
                 Connect
