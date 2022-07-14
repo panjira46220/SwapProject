@@ -9,7 +9,7 @@ import {
   getProvider,
   getSigner,
   getWalletAddress,
-  
+
 } from "../services/wallet-service";
 import Topbar from "../components/topbar";
 import SwapForm from "../components/SwapForm";
@@ -18,7 +18,7 @@ import { formatEther, formatUnits, parseEther } from "ethers/lib/utils";
 const Home: NextPage = () => {
   const [address, setAddress] = useState<string | null>(null);
   const [balance, setBalance] = useState<string | null>(null);
-  
+
   useEffect(() => {
     const addr = getWalletAddress();
     setAddress(addr);
@@ -28,78 +28,77 @@ const Home: NextPage = () => {
     const addr = getWalletAddress();
     setAddress(addr);
 
-    
+
 
     const bal = await getBalance(addr);
     if (bal) setBalance(formatEther(bal));
 
-  //   const tokenList = getNetworkTokens(chainId);
+    //   const tokenList = getNetworkTokens(chainId);
 
-  //   const tokenBalList = await Promise.all(
-  //     tokenList.map((token) =>
-  //       getTokenBalance(token.address, addr).then((res) =>
-  //         formatUnits(res, token.decimals)
-  //       )
-  //     )
-  //   );
+    //   const tokenBalList = await Promise.all(
+    //     tokenList.map((token) =>
+    //       getTokenBalance(token.address, addr).then((res) =>
+    //         formatUnits(res, token.decimals)
+    //       )
+    //     )
+    //   );
 
-  //   tokenList.forEach((token, i) => {
-  //     tokenBalances[token.symbol] = tokenBalList[i];
-  //   });
-  //   setTokenBalances({ ...tokenBalances });
-   };
+    //   tokenList.forEach((token, i) => {
+    //     tokenBalances[token.symbol] = tokenBalList[i];
+    //   });
+    //   setTokenBalances({ ...tokenBalances });
+  };
 
-   var test = "";
-    if (address != null) {
-        test = address.substring(0, 5) + "..." + address.substring(37, 42);
-    }
+  var test = "";
+  if (address != null) {
+    test = address.substring(0, 5) + "..." + address.substring(37, 42);
+  }
 
-   useEffect(() => {
+  useEffect(() => {
     loadAccountData();
-    
+
     const handleAccountChange = (addresses: string[]) => {
       setAddress(addresses[0]);
       loadAccountData();
     };
 
-    
-    
+
+
     getEthereum()?.on("accountsChanged", handleAccountChange);
-    
-   
+
+
   }, []);
   return (
-    <div>
+    <div className="bg-green-100 h-screen">
       {/* <Topbar address={address} /> */}
-      <nav className="flex justify-between items-center px-20 py-4 relative z-50" >
-            <div className="flex p-auto">
+      <nav className=" bg-white flex justify-between items-center px-20 py-2 relative z-50" >
+        <div className="flex p-auto">
+          <img
+            src="/BareBear.png"
+            alt="BareBear-logo"
+            className="w-[50px] h-[50px] mr-4 "
+          />
+          <div>
+            <p className="text-black text-lg font-bold mt-2">BEARSWAP</p>
+          </div>
+        </div>
 
-                <img
-                    src="/BareBear.png"
-                    alt="BareBear-logo"
-                    className="w-[50px] h-[50px] mr-4 "
-                />
-                <div>
-                    <p className="text-black text-lg font-bold mt-2">BEARSWAP</p>
-                </div>
-            </div>
-
-            <div className="flex space-x-24">
-                <div className="flex space-x-2 lg:flex text-black">
-                    <img
-                        src="/16093.png"
-                        alt="Ice-logo"
-                        className="w-[45px] h-[45px] mr-4 rounded-full"
-                    />
-                    <p className="mt-2">$</p>
-                    <p className="mt-2">{balance}</p>
-                </div>
-                <div className="border-black border-2 rounded-full w-full h-full p-2">
-                    <p className="ml-10 text-black">{test}</p>
-                </div>
-            </div>
-        </nav>
-      <div className="bg-green-100 min-h-screen pt-4">
+        <div className="flex space-x-24">
+          <div className="flex space-x-2 lg:flex text-black">
+            <img
+              src="/16093.png"
+              alt="Ice-logo"
+              className="w-[45px] h-[45px] mr-4 rounded-full"
+            />
+            <p className="mt-2">$</p>
+            <p className="mt-2">{balance}</p>
+          </div>
+          <div className="border-black border-2 rounded-full w-full h-full p-2">
+            <p className="ml-10 text-black">{test}</p>
+          </div>
+        </div>
+      </nav>
+      <div className="bg-green-100 max-h-screen pt-4">
         {address ? (
           <div>
             <SwapForm />
