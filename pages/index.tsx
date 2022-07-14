@@ -19,10 +19,7 @@ const Home: NextPage = () => {
   const [address, setAddress] = useState<string | null>(null);
   const [balance, setBalance] = useState<string | null>(null);
 
-  useEffect(() => {
-    const addr = getWalletAddress();
-    setAddress(addr);
-  }, []);
+
 
   const loadAccountData = async () => {
     const addr = getWalletAddress();
@@ -61,7 +58,8 @@ const Home: NextPage = () => {
       setAddress(addresses[0]);
       loadAccountData();
     };
-
+    const addr = getWalletAddress();
+    setAddress(addr);
 
 
     getEthereum()?.on("accountsChanged", handleAccountChange);
